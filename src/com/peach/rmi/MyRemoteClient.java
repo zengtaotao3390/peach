@@ -17,6 +17,7 @@ public class MyRemoteClient {
     public void go(){
         try {
             MyRemoteTest service = (MyRemoteTest) Naming.lookup("rmi://127.0.0.1/remoteHello");
+
             String str = service.sayHello();
             System.out.println(str);
         } catch (NotBoundException e) {
