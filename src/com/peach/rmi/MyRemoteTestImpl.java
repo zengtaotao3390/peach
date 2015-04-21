@@ -3,6 +3,8 @@ package com.peach.rmi;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -20,11 +22,11 @@ public class MyRemoteTestImpl extends UnicastRemoteObject implements MyRemoteTes
 
     public static void main(String[] args){
         try {
+            Registry registry = LocateRegistry.createRegistry(1234);
             MyRemoteTest service = new MyRemoteTestImpl();
-            Naming.rebind("remoteHello", service);
+            //Naming.rebind("remoteHello", service);
+            registry.rebind("remoteHello", service);
         } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }

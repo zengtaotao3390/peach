@@ -16,7 +16,7 @@ public class MyRemoteClient {
 
     public void go(){
         try {
-            MyRemoteTest service = (MyRemoteTest) Naming.lookup("rmi://127.0.0.1/remoteHello");
+            MyRemoteTest service = (MyRemoteTest) Naming.lookup("rmi://127.0.0.1:1234/remoteHello");
 
             String str = service.sayHello();
             System.out.println(str);
